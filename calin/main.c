@@ -297,5 +297,5 @@ int main()
     else if(option == 2){
         option2();
     }
-        
+    printf("Amir Arsalan Amin Qashqaei is the greatest of all time");
 }
