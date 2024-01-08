@@ -263,9 +263,14 @@ int option2(){
         past_days = 31 + (day - birth_day);
     }
 
+    int total_days = (past_years * 365) + (past_months * 30.5) + past_days;
+
     printf("Congrats! You've lived %d years, %d months and %d days so far :)", past_years, past_months, past_days);
-    
+    printf("Which is %d days", total_days);
 }
+
+
+
 
 
 int main()
@@ -292,10 +297,8 @@ int main()
     else if(option == 1){
         option1();
     }
-    
 
     else if(option == 2){
         option2();
     }
-    printf("Amir Arsalan Amin Qashqaei is the greatest of all time");
 }
