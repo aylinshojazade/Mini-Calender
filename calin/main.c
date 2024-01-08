@@ -265,11 +265,32 @@ int option2(){
 
     int total_days = (past_years * 365) + (past_months * 30.5) + past_days;
 
-    printf("Congrats! You've lived %d years, %d months and %d days so far :)", past_years, past_months, past_days);
+    printf("Congrats! You've lived %d years, %d months and %d days so far :)\n", past_years, past_months, past_days);
     printf("Which is %d days", total_days);
 }
 
+int option3(){
+    int syear, smonth, sday, gyear, gmonth, gday;
+    printf("Enter shamsi date\n");
+    printf("year :");
+    scanf("%d", &syear);
+    printf("month :");
+    scanf("%d", &smonth);
+    printf("day :");
+    scanf("%d", &sday);
+    gyear = syear + 621;
+    gmonth = (smonth + 2) % 12 + 1;
+    gday = (sday + 31 - 11) % 31 + 1;
+    if(smonth >= 10){
+        gyear ++;
+    }
+    if(sday >= 11){
+        gday ++;
+    }
 
+    printf("Gregorian date :\n");
+    printf("%d %d %d", gyear, gmonth, gday);
+}
 
 
 
@@ -300,5 +321,9 @@ int main()
 
     else if(option == 2){
         option2();
+    }
+
+    else if(option == 3){
+        option3();
     }
 }
