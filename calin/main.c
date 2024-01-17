@@ -66,19 +66,8 @@ int option1(){
         if(year == 0){
             main(); //back to menu
         }
-    printf("enter month : ");
-    scanf("%d", &month);
-        if(month == 0){
-            main(); //back to menu
-        }
-    printf("enter day : ");
-    scanf("%d", &day);
-        if(day == 0){
-            main(); //back to menu
-        }
-
-        //Invalid input!
-    while(year < 1206 || 1498 < year || month < 0 || 12 < month || day < 0 || 31 < day){
+    //Invalid Year!
+    while(year < 1206 || 1498 < year){
         system("cls");
         printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things real. \n");
         printf("enter year again : ");
@@ -86,11 +75,34 @@ int option1(){
         if(year == 0){
             main(); //back to menu
         }
+        printf("\033[0m");
+    }
+
+    printf("enter month : ");
+    scanf("%d", &month);
+        if(month == 0){
+            main(); //back to menu
+        }
+    //Invalid Month!
+    while(month < 0 || 12 < month){
+        system("cls");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things real. \n");
         printf("enter month again : ");
         scanf("%d", &month);
         if(month == 0){
             main(); //back to menu
         }
+        printf("\033[0m");
+    }
+    printf("enter day : ");
+    scanf("%d", &day);
+        if(day == 0){
+            main(); //back to menu
+        }
+    //Invalid day!
+    while(day < 0 || 31 < day){
+        system("cls");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things real. \n");
         printf("enter day again : ");
         scanf("%d", &day);
         if(day == 0){
@@ -101,42 +113,56 @@ int option1(){
 
     system("cls");
         
+    printf("\033[32m");//Color
+
+    //Printing the name of the month
     switch(month){
         case 1 :
-        printf("\t\t\t\033[32mFarvardin");
+        printf("\t\tFarvardin");
         break;
+
         case 2 :
-        printf("\t\t\033[32mOrdibehesht");
+        printf("\t\tOrdibehesht");
         break;
+
         case 3 :
-        printf("\t\t\033[32mKhordad");
+        printf("\t\tKhordad");
         break;
+
         case 4 :
-        printf("\t\t\033[32mTir");
+        printf("\t\tTir");
         break;
+
         case 5 :
-        printf("\t\t\033[32mMordad");
+        printf("\t\tMordad");
         break;
+
         case 6 :
-        printf("\t\t\033[32mShahrivar");
+        printf("\t\tShahrivar");
         break;
+
         case 7 :
-        printf("\t\t\033[32mMehr");
+        printf("\t\tMehr");
         break;
+
         case 8 :
-        printf("\t\t\033[32mAban");
+        printf("\t\tAban");
         break;
+
         case 9 :
-        printf("\t\t\033[32mAzar");
+        printf("\t\tAzar");
         break;
+
         case 10 :
-        printf("\t\t\033[32mDey");
+        printf("\t\tDey");
         break;
+
         case 11 :
-        printf("\t\t\033[32mBahman");
+        printf("\t\tBahman");
         break;
+        
         case 12 :
-        printf("\t\t\033[32mEsfand");
+        printf("\t\tEsfand");
         break;
     }
 
