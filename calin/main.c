@@ -57,9 +57,10 @@ int option0(){
 
 
 int option1(){
-    printf("[0] back to menu\n\n");
     system("cls");
 
+    printf("[0] back to menu\n\n");
+    
     int year, month, day;
     printf("enter year : ");
     scanf("%d", &year);
@@ -69,7 +70,8 @@ int option1(){
     //Invalid Year!
     while(year < 1206 || 1498 < year){
         system("cls");
-        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things real. \n");
+        printf("[0] back to menu\n\n");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
         printf("enter year again : ");
         scanf("%d", &year);
         if(year == 0){
@@ -86,7 +88,8 @@ int option1(){
     //Invalid Month!
     while(month < 0 || 12 < month){
         system("cls");
-        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things real. \n");
+        printf("[0] back to menu\n\n");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
         printf("enter month again : ");
         scanf("%d", &month);
         if(month == 0){
@@ -102,7 +105,8 @@ int option1(){
     //Invalid day!
     while(day < 0 || 31 < day){
         system("cls");
-        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things real. \n");
+        printf("[0] back to menu\n\n");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
         printf("enter day again : ");
         scanf("%d", &day);
         if(day == 0){
@@ -187,6 +191,9 @@ int option1(){
 
 int option2(){
     system("cls");
+
+    printf("[0] back to menu\n\n");
+
     int year, month, day, birth_year, birth_month, birth_day;
     printf("Enter today's date\n");
     printf("year : ");
@@ -194,31 +201,47 @@ int option2(){
     if(year == 0){
         main(); //back to menu
     }
+    //Invalid Year!
+    while(year < 0){
+        system("cls");
+        printf("[0] back to menu\n\n");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
+        printf("Enter year again\n");
+        printf("year : ");
+        scanf("%d", &year);
+        if(year == 0){
+            main(); //back to menu
+        }
+    }
+
     printf("month : ");
     scanf("%d", &month);
     if(month == 0){
         main(); //back to menu
+    }
+    //Invalid Month!
+    while(month < 0 || 12 < month){
+        system("cls");
+        printf("[0] back to menu\n\n");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
+        printf("Enter month again\n");
+        printf("month : ");
+        scanf("%d", &month);
+        if(month == 0){
+            main(); //back to menu
+        }
     }
     printf("day : ");
     scanf("%d", &day);
     if(day == 0){
         main(); //back to menu
     }
-
-    while(month < 0 || 12 < month || day < 0 || 31 < day){
+    //Invalid Day!
+    while(day < 0 || 31 < day){
         system("cls");
-        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things real. \n");
-        printf("Enter today's date again\n");
-        printf("year : ");
-        scanf("%d", &year);
-        if(year == 0){
-            main(); //back to menu
-        }
-        printf("month : ");
-        scanf("%d", &month);
-        if(month == 0){
-            main(); //back to menu
-        }
+        printf("[0] back to menu\n\n");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
+        printf("Enter day again\n");
         printf("day : ");
         scanf("%d", &day);
         if(day == 0){
@@ -228,43 +251,58 @@ int option2(){
     printf("\033[0m");
 
     system("cls");
+    printf("[0] back to menu\n\n");
     printf("Enter your date of birth\n");
     printf("birth year : ");
     scanf("%d", &birth_year);
     if(birth_year == 0){
         main(); //back to menu
     }
+    //Invalid birth Year!
+    while(year < 0){
+        system("cls");
+        printf("[0] back to menu\n\n");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
+        printf("Enter birth year again\n");
+        printf("year : ");
+        scanf("%d", &year);
+        if(year == 0){
+            main(); //back to menu
+        }
+    }
     printf("birth month : ");
     scanf("%d", &birth_month);
     if(birth_month == 0){
         main(); //back to menu
+    }
+    //Invalid birth Month!
+    while(month < 0 || 12 < month){
+        system("cls");
+        printf("[0] back to menu\n\n");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
+        printf("Enter birth month again\n");
+        printf("month : ");
+        scanf("%d", &month);
+        if(month == 0){
+            main(); //back to menu
+        }
     }
     printf("birth day : ");
     scanf("%d", &birth_day);
     if(birth_day == 0){
         main(); //back to menu
     }
-
-    while(birth_month < 0 || 12 < birth_month || birth_day < 0 || 31 < birth_day){
+    //Invalid birth Day!
+    while(day < 0 || 31 < day){
         system("cls");
-        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things real. \n");
-        printf("Enter your date of birth again\n");
-        printf("year : ");
-        scanf("%d", &birth_year);
-        if(birth_year == 0){
-            main(); //back to menu
-        }
-        printf("month : ");
-        scanf("%d", &birth_month);
-        if(birth_month == 0){
-            main(); //back to menu
-        }
+        printf("[0] back to menu\n\n");
+        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
+        printf("Enter day again\n");
         printf("day : ");
-        scanf("%d", &birth_day);
-        if(birth_day == 0){
+        scanf("%d", &day);
+        if(day == 0){
             main(); //back to menu
         }
-        printf("\033[0m");
     }
 
     system("cls");
@@ -289,21 +327,36 @@ int option2(){
         past_days = 31 + (day - birth_day);
     }
 
-    int total_days = (past_years * 365) + (past_months * 30.5) + past_days;
+    int total_days = (past_years * 365) + (past_months * 30.5) + past_days + (kabise(birth_year) - kabise(year));
 
     printf("Congrats! You've lived %d years, %d months and %d days so far :)\n", past_years, past_months, past_days);
     printf("Which is %d days", total_days);
 }
 
 int option3(){
+    system("cls");
+
+    printf("[0] back to menu\n\n");
+    // s : shamsi
+    // g : gregorian
     int syear, smonth, sday, gyear, gmonth, gday;
+
     printf("Enter shamsi date\n");
     printf("year :");
     scanf("%d", &syear);
+    if(syear == 0)
+        main(); //back to menu
+
     printf("month :");
     scanf("%d", &smonth);
+    if(smonth == 0)
+        main(); //back to menu
+
     printf("day :");
     scanf("%d", &sday);
+    if(sday == 0)
+        main(); //back to menu
+
     gyear = syear + 621;
     gmonth = (smonth + 2) % 12 + 1;
     gday = (sday + 31 - 11) % 31 + 1;
