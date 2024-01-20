@@ -4,17 +4,23 @@
 #include <windows.h>
 
 int kabise(int year){  
-    int count_a1 = 0, count_a2 = 0;
+    int count_a1 = 0, count_a2 = 0, count = 0;
         int a = year - 1210;
-        while(a >= 33) {
-            a -= 33;
-            count_a1 ++;
+        if(a <= 0) {
+            return 0;
         }
-        while(a > 0) {
-            a -= 4;
-            count_a2 ++;
+
+        else if(a > 0) {
+            while(a >= 33) {
+                a -= 33;
+                    count_a1 ++;
+            }
+            while(a > 0) {
+                a -= 4;
+                count_a2 ++;
+            }
+            return (count_a1 * 8) + count_a2;
         }
-        return (count_a1 * 8) + count_a2;
 }
 
 
@@ -42,7 +48,7 @@ int n(int month, int year){
             return 1 +(month - 1) * 31 + (year - 1206) * 365 + kabise(year);
         }
         else if(7 <= month && month <= 12){
-            return  1 + (6 * 31) + (month - 1) * 30 + (year - 1206) * 365 + kabise(year);
+            return  1 + (6 * 31) + (month - 7) * 30 + (year - 1206) * 365 + kabise(year);
         }
 }
 
@@ -333,7 +339,25 @@ int option2(){
     printf("Which is %d days", total_days);
 }
 
-int option3(){
+
+int option3_select(){
+    system("cls");
+
+    printf("[0] back to menu\n");
+    printf("[1] shmasi to gregorian\n");
+    printf("[3] ?????\n");
+    printf("[4] ?????\n");
+    int option;
+    scanf("%d", &option);
+
+    if(option == 0)
+        main();// back to menu
+
+    else if(option == 1)
+        option3_1();
+}
+
+int option3_1(){
     system("cls");
 
     printf("[0] back to menu\n\n");
@@ -403,6 +427,6 @@ int main()
     }
 
     else if(option == 3){
-        option3();
+        option3_select();
     }
 }
