@@ -25,6 +25,36 @@ int kabise(int year){
 
 
 
+int days(int month , int year){
+    if(1 <= month && month <= 6){
+        return 31;
+    }
+    else if(7 <= month && month <= 11){
+        return 30;
+    }
+    else if(month == 12){
+        if((year - 1210) % 7 == 0){
+            return 30;
+            }
+            else {
+            return 29;
+            }
+        }
+}
+
+
+int n(int month, int year){
+
+        if(1 <= month && month <= 6){
+            return  (month - 1) * 31 + (year - 1206) * 365 + kabise(year);
+        }
+        else if(7 <= month && month <= 12){
+            return  (6 * 31) + (month - 7) * 30 + (year - 1206) * 365 + kabise(year);
+        }
+}
+
+
+
 void option0(){
    // system("cls");
     printf(" Bye!");
@@ -32,8 +62,6 @@ void option0(){
     system("cls");
     exit(0);
 }
-
-
 
 
 void option1(){
@@ -46,8 +74,6 @@ void option1(){
     scanf("%d", &year);
         if(year == 0){
             printf("\033[0m");
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     //Invalid Year!
@@ -59,19 +85,15 @@ void option1(){
         scanf("%d", &year);
         if(year == 0){
             printf("\033[0m");
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
-        printf("\033[0m");
+       // printf("\033[0m");
     }
 
     printf("enter month : ");
     scanf("%d", &month);
         if(month == 0){
             printf("\033[0m");
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     //Invalid Month!
@@ -83,18 +105,14 @@ void option1(){
         scanf("%d", &month);
         if(month == 0){
             printf("\033[0m");
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
-        printf("\033[0m");
+      //  printf("\033[0m");
     }
     printf("enter day : ");
     scanf("%d", &day);
         if(day == 0){
             printf("\033[0m");
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     //Invalid day!
@@ -106,29 +124,10 @@ void option1(){
         scanf("%d", &day);
         if(day == 0){
             printf("\033[0m");
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
-       printf("\033[0m");
+       // printf("\033[0m");
     }
-    
-
-    int n; // n = past days until the first of that month
-    if (1 <= month && month <= 6)
-        n = (month - 1) * 31 + (year - 1206) * 365 + kabise(year);
-
-    else if (7 <= month && month <= 12)
-        n = (6 * 31) + (month - 7) * 30 + (year - 1206) * 365 + kabise(year);
-
-    int daysinmonth_shamsi[12] = {31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30};
-    
-    if ((year - 1210) % 7 == 0)
-        daysinmonth_shamsi[12] = 30;
-
-    else
-        daysinmonth_shamsi[12] = 29;
-    
 
     system("cls");
 
@@ -190,17 +189,15 @@ void option1(){
     printf("\nSH\tYE\tDO\tSE\tCH\tPA\tJO\n");
 
     int i = 0;
-    for(i = 0; i < ((n - 2) % 7); i ++){
+    for(i = 0; i < ((n(month, year) - 2) % 7); i ++){
     printf("\t");
     }
-    for(int j  = 1; j <= daysinmonth_shamsi[month]; j++){
+    for(int j  = 1; j <= days(month, year); j++){
     printf("%d\t",j);
         if((i + j) % 7 == 0){
             printf("\n");
         }
     }
-
-
     printf("\n\n...Plz enter b to back menu...");
 
     char ss = getch();
@@ -209,6 +206,7 @@ void option1(){
             system("cls");
             printf("\n\n...Plz enter b to back menu...");
             ss = getch();
+
     }
     if(ss == 'B' || ss == 'b'){
         menu();
@@ -229,8 +227,6 @@ void option2(){
     printf("year : ");
     scanf("%d", &year);
     if(year == 0){
-        printf(" Back to menu!");
-        sleep(4);
         menu(); //back to menu
     }
     //Invalid Year!
@@ -242,18 +238,14 @@ void option2(){
         printf("year : ");
         scanf("%d", &year);
         if(year == 0){
-            printf(" Back to menu!");
-            sleep(4);
-            menu(); //back to menu
+            main(); //back to menu
         }
     }
 
     printf("month : ");
     scanf("%d", &month);
     if(month == 0){
-        printf(" Back to menu!");
-        sleep(4);
-        menu(); //back to menu
+        main(); //back to menu
     }
     //Invalid Month!
     while(month < 0 || 12 < month){
@@ -264,16 +256,12 @@ void option2(){
         printf("month : ");
         scanf("%d", &month);
         if(month == 0){
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     }
     printf("day : ");
     scanf("%d", &day);
     if(day == 0){
-        printf(" Back to menu!");
-        sleep(4);
         menu(); //back to menu
     }
     //Invalid Day!
@@ -285,8 +273,6 @@ void option2(){
         printf("day : ");
         scanf("%d", &day);
         if(day == 0){
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     }
@@ -298,9 +284,7 @@ void option2(){
     printf("birth year : ");
     scanf("%d", &birth_year);
     if(birth_year == 0){
-        printf(" Back to menu!");
-        sleep(4);
-        menu(); //back to menu
+        main(); //back to menu
     }
     //Invalid birth Year!
     while(year < 0){
@@ -311,16 +295,12 @@ void option2(){
         printf("year : ");
         scanf("%d", &year);
         if(year == 0){
-            printf(" Back to menu!");
-            sleep(4);
-            menu(); //back to menu
+            main(); //back to menu
         }
     }
     printf("birth month : ");
     scanf("%d", &birth_month);
     if(birth_month == 0){
-        printf(" Back to menu!");
-        sleep(4);
         menu(); //back to menu
     }
     //Invalid birth Month!
@@ -332,16 +312,12 @@ void option2(){
         printf("month : ");
         scanf("%d", &month);
         if(month == 0){
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     }
     printf("birth day : ");
     scanf("%d", &birth_day);
     if(birth_day == 0){
-        printf(" Back to menu!");
-        sleep(4);
         menu(); //back to menu
     }
     //Invalid birth Day!
@@ -353,9 +329,7 @@ void option2(){
         printf("day : ");
         scanf("%d", &day);
         if(day == 0){
-            printf(" Back to menu!");
-            sleep(4);
-            menu(); //back to menu
+            main(); //back to menu
         }
     }
 
@@ -412,11 +386,14 @@ void option2(){
     printf("Which is %d days.", total_days);
 
     printf("\n\n...Plz enter b to back menu...");
+
     char ss = getch();
+
     while(ss != 'b'){
             system("cls");
             printf("\n\n...Plz enter b to back menu...");
             ss = getch();
+
     }
     if(ss == 'B' || ss == 'b'){
         menu();
@@ -430,19 +407,17 @@ void option3_shamsi_to_gregorian(){
     system("cls");
 
     int daysinmonth_shamsi[12] = {31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29};
-    float daysinmonth_gregorian[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    float daysinmonth_gregorian[12] = {31, 28.25, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     printf("[0] back to menu\n\n");
     // s : shamsi
     // g : gregorian
-    int syear, smonth, sday, gyear = 1827, gmonth = 1, gday = 1;
+    int syear, smonth, sday, gyear = 1827, gmonth = 0, gday = 0;
 
     printf("Enter shamsi date\n");
-    printf("year : ");
+    printf("year :");
     scanf("%d", &syear);
     if(syear == 0)
-        printf(" Back to menu!");
-        sleep(4);
         menu(); //back to menu
     //Invalid shamsi year!
     while(syear <  0){
@@ -453,21 +428,16 @@ void option3_shamsi_to_gregorian(){
         printf("year : ");
         scanf("%d", &syear);
         if(syear == 0){
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     }
     printf("\033[0m");
 
 
-    printf("month : ");
+    printf("month :");
     scanf("%d", &smonth);
-    if(smonth == 0){
-        printf(" Back to menu!");
-        sleep(4);
+    if(smonth == 0)
         menu(); //back to menu
-    }
         //Invalid shamsi month!
     while(smonth < 0 || 12 < smonth){
         system("cls");
@@ -477,20 +447,15 @@ void option3_shamsi_to_gregorian(){
         printf("month : ");
         scanf("%d", &smonth);
         if(smonth == 0){
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     }
     printf("\033[0m");
 
-    printf("day : ");
+    printf("day :");
     scanf("%d", &sday);
-    if(sday == 0){
-        printf(" Back to menu!");
-        sleep(4);
+    if(sday == 0)
         menu(); //back to menu
-    }
         //Invalid shamsi Day!
     while(sday < 0 || 31 < sday){
         system("cls");
@@ -500,8 +465,6 @@ void option3_shamsi_to_gregorian(){
         printf("day : ");
         scanf("%d", &sday);
         if(sday == 0){
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     }
@@ -510,13 +473,13 @@ void option3_shamsi_to_gregorian(){
     system("cls");
 
     int n = 0;
-    n += 78;
-    n += (syear - 1206) * 365;
-
+    n += (syear - 1206) * 365 + kabise(syear);
     for (int i = 0; i <smonth - 1; i++){
         n += daysinmonth_shamsi[i];
     }
     n += sday;
+
+    n -= 81;
 
     while (n >= 365){
         n -= 365;
@@ -528,19 +491,28 @@ void option3_shamsi_to_gregorian(){
         n -= daysinmonth_gregorian[i];
         gmonth ++;
     }
-    gday += n;
+    gday = n;
 
-    printf("Shamsi date : \n");
-    printf("%d %d %d", syear, smonth, sday);
-    printf("Gregorian date : \n");
+    // gyear = syear + 621;
+    // gmonth = (smonth + 2) % 12;
+    // gday = (sday + 31 - 11) % 31;
+    // if(smonth >= 10){
+    //     gyear ++;
+    // }
+    // if(sday >= 11){
+    //     gmonth ++;
+    // }
+
+    printf("Gregorian date :\n");
     printf("%d %d %d", gyear, gmonth, gday);
 
-    printf("\n\n...Plz enter b to back menu...");
     char ss = getch();
+
     while(ss != 'b'){
             system("cls");
             printf("\n\n...Plz enter b to back menu...");
             ss = getch();
+
     }
     if(ss == 'B' || ss == 'b'){
         menu();
@@ -550,27 +522,19 @@ void option3_shamsi_to_gregorian(){
 
 
 
-
-
 void option3_shamsi_to_hijri(){
     system("cls");
-
-    int daysinmonth_shamsi[12] = {31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29};
-    float daysinmonth_hijri[12] = {30, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 29};
 
     printf("[0] back to menu\n\n");
     // s : shamsi
     // h : hijri
-    int syear, smonth, sday, hyear = 1242, hmonth = 1, hday = 1;
+    int syear, smonth, sday, hyear, hmonth, hday;
 
     printf("Enter shamsi date\n");
-    printf("year : ");
+    printf("year :");
     scanf("%d", &syear);
-    if(syear == 0){
-        printf(" Back to menu!");
-        sleep(4);
+    if(syear == 0)
         menu(); //back to menu
-    }
     //Invalid shamsi year!
     while(syear <  0){
         system("cls");
@@ -580,20 +544,15 @@ void option3_shamsi_to_hijri(){
         printf("year : ");
         scanf("%d", &syear);
         if(syear == 0){
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     }
     printf("\033[0m");
 
-    printf("month : ");
+    printf("month :");
     scanf("%d", &smonth);
-    if(smonth == 0){
-        printf(" Back to menu!");
-        sleep(4);
+    if(smonth == 0)
         menu(); //back to menu
-    }
         //Invalid shamsi month!
     while(smonth < 0 || 12 < smonth){
         system("cls");
@@ -603,20 +562,15 @@ void option3_shamsi_to_hijri(){
         printf("month : ");
         scanf("%d", &smonth);
         if(smonth == 0){
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     }
     printf("\033[0m");
 
-    printf("day : ");
+    printf("day :");
     scanf("%d", &sday);
-    if(sday == 0){
-        printf(" Back to menu!");
-        sleep(4);
+    if(sday == 0)
         menu(); //back to menu
-    }
         //Invalid shamsi Day!
     while(sday < 0 || 31 < sday){
         system("cls");
@@ -626,8 +580,6 @@ void option3_shamsi_to_hijri(){
         printf("day : ");
         scanf("%d", &sday);
         if(sday == 0){
-            printf(" Back to menu!");
-            sleep(4);
             menu(); //back to menu
         }
     }
@@ -635,173 +587,34 @@ void option3_shamsi_to_hijri(){
 
 
 
-    int n = 0;
-    n += 227;
-    n += (syear - 1206) * 365 + kabise(syear);
+    // hyear = syear + 42;
+    // hmonth = (smonth + 8) % 12;
+    // hday = (sday + 31 - 3) % 31;
+    // if(smonth >= 9){
+    //     hyear ++;
+    // }
+    // if(sday >= 4){
+    //     hmonth ++;
+    // }
 
-    for (int i = 0; i <smonth - 1; i++){
-        n += daysinmonth_shamsi[i];
-    }
-    n += sday - 1;
-
-    float temp = 0;
-    while (n >= 354){
-        temp += 0.36;
-        n -= 354;
-        hyear ++;
-    }
-    n -= temp;
-
-    int i = 0;
-    while (n >= daysinmonth_hijri[i]){
-        n -= daysinmonth_hijri[i];
-        hmonth ++;
-    }
-    hday += n;
-
-    printf("Shamsi date : \n");
-    printf("%d %d %d", syear, smonth, sday);
-    printf("\n\nHijri date : \n");
+    printf("Hijri date :\n");
     printf("%d %d %d", hyear, hmonth, hday);
 
     printf("\n\n...Plz enter b to back menu...");
+
     char ss = getch();
+
     while(ss != 'b'){
             system("cls");
             printf("\n\n...Plz enter b to back menu...");
             ss = getch();
+
     }
     if(ss == 'B' || ss == 'b'){
         menu();
     }
 }
 
-
-
-
-
-
-
-void option3_gregorian_to_shmasi(){
-    system("cls");
-
-    int daysinmonth_shamsi[12] = {31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29};
-    float daysinmonth_gregorian[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-
-    printf("[0] back to menu\n\n");
-    // s : shamsi
-    // g : gregorian
-    int syear = 1205, smonth = 1, sday = 1, gyear, gmonth, gday;
-
-    printf("Enter gregoian date\n");
-    printf("year : ");
-    scanf("%d", &gyear);
-    if(gyear == 0){
-        printf(" Back to menu!");
-        sleep(4);
-        menu(); //back to menu
-    }
-    //Invalid gregorian year!
-    while(gyear <  0){
-        system("cls");
-        printf("[0] back to menu\n\n");
-        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
-        printf("Enter gregorian year again\n");
-        printf("year : ");
-        scanf("%d", &gyear);
-        if(gyear == 0){
-            printf(" Back to menu!");
-            sleep(4);
-            menu(); //back to menu
-        }
-    }
-    printf("\033[0m");
-
-
-    printf("month : ");
-    scanf("%d", &gmonth);
-    if(gmonth == 0)
-        menu(); //back to menu
-        //Invalid gregorian month!
-    while(gmonth < 0 || 12 < gmonth){
-        system("cls");
-        printf("[0] back to menu\n\n");
-        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
-        printf("Enter gregorian month again\n");
-        printf("month : ");
-        scanf("%d", &gmonth);
-        if(gmonth == 0){
-            printf(" Back to menu!");
-            sleep(4);
-            menu(); //back to menu
-        }
-    }
-    printf("\033[0m");
-
-    printf("day : ");
-    scanf("%d", &gday);
-    if(gday == 0){
-        printf(" Back to menu!");
-        sleep(4);
-        menu(); //back to menu
-    }
-        //Invalid gregorian Day!
-    while(gday < 0 || 31 < gday){
-        system("cls");
-        printf("[0] back to menu\n\n");
-        printf("\033[31mHey? I'm just an ordinary computer. Even I can't make impossible things happen. \n");
-        printf("Enter gregorian day again\n");
-        printf("day : ");
-        scanf("%d", &gday);
-        if(gday == 0){
-            printf(" Back to menu!");
-            sleep(4);
-            menu(); //back to menu
-        }
-    }
-    printf("\033[0m");
-
-    system("cls");
-
-    int n = 0;
-    n += 285;
-    n += (gyear - 1827) * 365;
-
-    for (int i = 0; i <gmonth - 1; i++){
-        n += daysinmonth_gregorian[i];
-    }
-    n += gday;
-
-    while (n >= 365){
-        n -= 365;
-        syear ++;
-    }
-
-    int i = 0;
-    while (n >= daysinmonth_shamsi[i]){
-        n -= daysinmonth_shamsi[i];
-        smonth ++;
-    }
-    sday += n;
-
-
-    printf("Gregorian date : \n");
-    printf("%d %d %d", gyear, gmonth, gday);
-    printf("\n\nShamsi date : \n");
-    printf("%d %d %d", syear, smonth, sday);
-
-
-    printf("\n\n...Plz enter b to back menu...");
-    char ss = getch();
-    while(ss != 'b'){
-            system("cls");
-            printf("\n\n...Plz enter b to back menu...");
-            ss = getch();
-    }
-    if(ss == 'B' || ss == 'b'){
-        menu();
-    }
-}
 
 
 
@@ -813,9 +626,7 @@ void option3_select(){
     printf("[0] back to menu\n");
     printf("[1] Shmasi to Gregorian\n");
     printf("[2] Shamsi to Hijri\n");
-    printf("[3] Gregorian to Shamsi\n");
-    printf("[4] Gregorian to Hijri?????\n");
-
+    printf("[3] ?????\n");
     int option;
     scanf("%d", &option);
     //Invalid option
@@ -828,20 +639,14 @@ void option3_select(){
     printf("\033[0m");
 
 
-    if(option == 0){
-        printf(" Back to menu!");
-        sleep(4);
+    if(option == 0)
         menu();// back to menu
-    }
 
     else if(option == 1)
         option3_shamsi_to_gregorian();
 
     else if(option == 2)
         option3_shamsi_to_hijri();
-
-    else if(option == 3)
-        option3_gregorian_to_shmasi();
 
 }
 
